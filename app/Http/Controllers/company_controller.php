@@ -75,8 +75,11 @@ class company_controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
         //
+        company::deleteCompany($id);
+        return redirect()->route('index')->with('success', '企業が削除されました。');
+
     }
 }

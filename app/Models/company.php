@@ -26,4 +26,9 @@ class company extends Model
     {
         return self::findOrFail($id);
     }
+
+    public static function deleteCompany($id)
+    {
+        return self::find($id)->delete();
+    }
 }
