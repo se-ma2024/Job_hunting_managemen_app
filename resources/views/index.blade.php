@@ -13,7 +13,7 @@
     <main>
         <ul>
             @foreach($companies as $company)
-                <li>{{ $company->name }}</li>
+                <li><a href="{{ route('detail', ['id' => $company->id]) }}">{{ $company->name }}</a></li>
             @endforeach
         </ul>
         <a href="{{ route('create') }}">企業追加</a>

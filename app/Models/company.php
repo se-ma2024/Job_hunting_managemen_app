@@ -21,4 +21,9 @@ class company extends Model
     {
         return self::create(['name' => $name]);
     }
+    
+    public static function showDetail($id)
+    {
+        return self::findOrFail($id);
+    }
 }

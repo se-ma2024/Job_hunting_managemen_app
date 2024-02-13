@@ -49,9 +49,11 @@ class company_controller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function detail(string $id)
     {
         //
+        $company = Company::showDetail($id);
+        return view('detail', ['company' => $company]);
     }
 
     /**
