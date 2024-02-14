@@ -31,4 +31,10 @@ class company extends Model
     {
         return self::find($id)->delete();
     }
+
+    public function updateCompany($data)
+    {
+        $this->update($data);
+    }
+
 }

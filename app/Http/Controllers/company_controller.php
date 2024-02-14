@@ -62,6 +62,8 @@ class company_controller extends Controller
     public function edit(string $id)
     {
         //
+        $company = Company::showDetail($id);
+        return view('edit', ['company' => $company]);
     }
 
     /**
@@ -69,8 +71,14 @@ class company_controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        $company = Company::findOrFail($id);
+        $company->updateCompany($request->all());
+        return redirect()->route('detail', ['id' => $company->id])->with('success', '企業情報が更新されました');
     }
+
 
     /**
      * Remove the specified resource from storage.

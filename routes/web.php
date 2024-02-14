@@ -19,3 +19,5 @@ Route::get('/create', [Company_Controller::class, 'create'])->name('create');
 Route::get('/{id}', [Company_Controller::class, 'detail'])->name('detail');
 Route::delete('/{id}', [Company_Controller::class, 'delete'])->name('delete');
 Route::post('store', [Company_Controller::class, 'store'])->name('store');
+Route::get('/edit/{id}', [Company_Controller::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [Company_Controller::class, 'update'])->name('update');

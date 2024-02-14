@@ -15,6 +15,7 @@
             <p>企業ID: {{ $company->id }}</p>
             <!-- その他の企業の詳細情報を表示する場合はここに追加 -->
         </div>
+        <a href="{{ route('edit', ['id' => $company->id]) }}">編集</a>
         <a href="{{ route('index') }}">戻る</a>
     </main>
 </body>
