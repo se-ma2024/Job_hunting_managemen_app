@@ -28,6 +28,7 @@ class company_controller extends Controller
             'strengths' => 'nullable|string',
             'benefits_package' => 'nullable|string',
             'selection_status' => 'required|string|max:255',
+            'reason_for_applying' => 'nullable|string',
             'memo' => 'nullable|string',
         ]);
 
@@ -56,6 +57,7 @@ class company_controller extends Controller
             'strengths' => 'nullable|string',
             'benefits_package' => 'nullable|string',
             'selection_status' => 'required|string|max:255',
+            'reason_for_applying' => 'nullable|string',
             'memo' => 'nullable|string',
         ]);
         $company = Company::findOrFail($id);

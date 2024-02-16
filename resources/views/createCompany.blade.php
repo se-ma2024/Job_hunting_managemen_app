@@ -74,6 +74,10 @@
                 </select>
             </div>
             <div>
+                <label for="reason_for_applying">志望動機:</label>
+                <textarea id="reason_for_applying" name="reason_for_applying" rows="10"></textarea>
+            </div>
+            <div>
                 <label for="memo">メモ:</label>
                 <textarea id="memo" name="memo" rows="10"></textarea>
             </div>

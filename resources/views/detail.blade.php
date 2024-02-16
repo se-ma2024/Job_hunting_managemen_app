@@ -17,6 +17,7 @@
             <p>企業の強み: {{ $company->strengths }}</p>
             <p>福利厚生: {{ $company->benefits_package }}</p>
             <p>選考状況: {{ $company->selection_status }}</p>
+            <p>志望動機: {{ $company->reason_for_applying }}</p>
             <p>メモ: {{ $company->memo }}</p>
         </div>
         <a href="{{ route('edit', ['id' => $company->id]) }}">編集</a>
