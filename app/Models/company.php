@@ -11,12 +11,8 @@ class company extends Model
 
     protected $fillable = ['name', 'industry', 'company_size', 'strengths', 'benefits_package', 'selection_status', 'memo'];
 
-    // タイムスタンプを自動的に更新しない
     public $timestamps = false;
-    
-    /**
-     * データベースに企業を追加する。
-     */
+
     public static function addCompany($data)
     {
         return self::create($data);
@@ -36,5 +32,4 @@ class company extends Model
     {
         $this->update($data);
     }
-
 }

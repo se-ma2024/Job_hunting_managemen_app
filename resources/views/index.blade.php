@@ -15,7 +15,6 @@
             @foreach($companies as $company)
                 <li>
                     <a href="{{ route('detail', ['id' => $company->id]) }}">{{ $company->name }}</a>
-                    <!-- 削除フォームを追加 -->
                     <form id="delete-form-{{ $company->id }}" action="{{ route('delete', ['id' => $company->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -28,7 +27,6 @@
     </main>
 
     <script>
-        // 確認ダイアログを表示する関数
         function confirmDelete(formId) {
             return confirm('本当に削除してもよろしいですか？');
         }

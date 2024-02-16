@@ -77,10 +77,6 @@
                 <label for="memo">メモ:</label>
                 <textarea id="memo" name="memo" rows="10"></textarea>
             </div>
-            <!-- <div>
-                <label for="description">説明:</label>
-                <textarea id="description" name="description"></textarea>
-            </div> -->
             <button type="submit">追加</button>
         </form>
     </main>
