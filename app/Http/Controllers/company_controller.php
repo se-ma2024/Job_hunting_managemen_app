@@ -77,6 +77,12 @@ class company_controller extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'industry' => 'required|string|max:255',
+            'company_size' => 'required|string|max:255',
+            'strengths' => 'nullable|string',
+            'benefits_package' => 'nullable|string',
+            'selection_status' => 'required|string|max:255',
+            'memo' => 'nullable|string',
         ]);
         $company = Company::findOrFail($id);
         $company->updateCompany($request->all());
