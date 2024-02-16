@@ -35,12 +35,16 @@ class company_controller extends Controller
         // バリデーションのルールを設定
         $request->validate([
             'name' => 'required|string|max:255',
-            // 他のフォームフィールドに対するルールを追加する場合はここに追加
+            'industry' => 'required|string|max:255',
+            'company_size' => 'required|string|max:255',
+            'strengths' => 'nullable|string',
+            'benefits_package' => 'nullable|string',
+            'selection_status' => 'required|string|max:255',
+            'memo' => 'nullable|string',
         ]);
 
         // Companyモデルを使用して新しい企業を追加
-        $companyName = $request->input('name');
-        company::addCompany($companyName);
+        $company = Company::addCompany($request->all());
 
         // ホームページにリダイレクトし、成功メッセージを表示
         return redirect()->route('index')->with('success', '企業が追加されました。');

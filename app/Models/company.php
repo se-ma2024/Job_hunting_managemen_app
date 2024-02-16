@@ -9,7 +9,7 @@ class company extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'industry', 'company_size', 'strengths', 'benefits_package', 'selection_status', 'memo'];
 
     // タイムスタンプを自動的に更新しない
     public $timestamps = false;
@@ -17,9 +17,9 @@ class company extends Model
     /**
      * データベースに企業を追加する。
      */
-    public static function addCompany($name)
+    public static function addCompany($data)
     {
-        return self::create(['name' => $name]);
+        return self::create($data);
     }
     
     public static function showDetail($id)
