@@ -23,7 +23,7 @@
                 </li>
             @endforeach
         </ul>
-        <a href="{{ route('create') }}">企業追加</a>
+        <a href="{{ route('createCompany') }}">企業追加</a>
     </main>
 
     <script>

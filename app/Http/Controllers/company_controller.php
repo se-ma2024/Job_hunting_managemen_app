@@ -14,9 +14,9 @@ class company_controller extends Controller
         return view('index', ['companies' => $companies]);
     }
 
-    public function create()
+    public function createCompany()
     {
-        return view("create");
+        return view("createCompany");
     }
 
     public function store(Request $request)

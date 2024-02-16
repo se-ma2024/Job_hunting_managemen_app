@@ -15,7 +15,7 @@ use App\Http\Controllers\company_controller;
 */
 
 Route::get('/', [Company_Controller::class, 'index'])->name('index');
-Route::get('/create', [Company_Controller::class, 'create'])->name('create');
+Route::get('/createCompany', [Company_Controller::class, 'createCompany'])->name('createCompany');
 Route::get('/{id}', [Company_Controller::class, 'detail'])->name('detail');
 Route::delete('/{id}', [Company_Controller::class, 'delete'])->name('delete');
 Route::post('store', [Company_Controller::class, 'store'])->name('store');
