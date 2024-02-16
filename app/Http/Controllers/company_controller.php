@@ -19,7 +19,7 @@ class company_controller extends Controller
         return view("createCompany");
     }
 
-    public function store(Request $request)
+    public function addCompanyDetail(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -36,19 +36,19 @@ class company_controller extends Controller
         return redirect()->route('index')->with('success', '企業が追加されました。');
     }
 
-    public function detail(string $id)
+    public function detailCompany(string $id)
     {
-        $company = Company::showDetail($id);
-        return view('detail', ['company' => $company]);
+        $company = Company::showDetailCompany($id);
+        return view('detailCompany', ['company' => $company]);
     }
 
-    public function edit(string $id)
+    public function editCompany(string $id)
     {
-        $company = Company::showDetail($id);
-        return view('edit', ['company' => $company]);
+        $company = Company::showDetailCompany($id);
+        return view('editCompany', ['company' => $company]);
     }
 
-    public function update(Request $request, string $id)
+    public function updateCompany(Request $request, string $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -62,7 +62,7 @@ class company_controller extends Controller
         ]);
         $company = Company::findOrFail($id);
         $company->updateCompany($request->all());
-        return redirect()->route('detail', ['id' => $company->id])->with('success', '企業情報が更新されました');
+        return redirect()->route('detailCompany', ['id' => $company->id])->with('success', '企業情報が更新されました');
     }
 
     public function delete(string $id)

@@ -20,7 +20,7 @@
             <p>志望動機: {{ $company->reason_for_applying }}</p>
             <p>メモ: {{ $company->memo }}</p>
         </div>
-        <a href="{{ route('edit', ['id' => $company->id]) }}">編集</a>
+        <a href="{{ route('editCompany', ['id' => $company->id]) }}">編集</a>
         <a href="{{ route('index') }}">戻る</a>
     </main>
 </body>

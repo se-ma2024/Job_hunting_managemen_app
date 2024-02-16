@@ -10,7 +10,7 @@
         <h1>企業詳細</h1>
     </header>
     <main>
-        <form action="{{ route('update', ['id' => $company->id]) }}" method="POST">
+        <form action="{{ route('updateCompany', ['id' => $company->id]) }}" method="POST">
             @csrf
             @method('PUT')
             <div>
@@ -83,7 +83,7 @@
             </div>
             <button type="submit">更新</button>
         </form>
-        <a href="{{ route('detail', ['id' => $company->id]) }}">キャンセル</a>
+        <a href="{{ route('detailCompany', ['id' => $company->id]) }}">キャンセル</a>
     </main>
 </body>
 </html>

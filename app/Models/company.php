@@ -18,7 +18,7 @@ class company extends Model
         return self::create($data);
     }
     
-    public static function showDetail($id)
+    public static function showDetailCompany($id)
     {
         return self::findOrFail($id);
     }

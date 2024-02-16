@@ -14,7 +14,7 @@
         <ul>
             @foreach($companies as $company)
                 <li>
-                    <a href="{{ route('detail', ['id' => $company->id]) }}">{{ $company->name }}</a>
+                    <a href="{{ route('detailCompany', ['id' => $company->id]) }}">{{ $company->name }}</a>
                     <form id="delete-form-{{ $company->id }}" action="{{ route('delete', ['id' => $company->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')

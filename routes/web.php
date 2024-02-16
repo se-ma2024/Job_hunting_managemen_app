@@ -16,8 +16,8 @@ use App\Http\Controllers\company_controller;
 
 Route::get('/', [Company_Controller::class, 'index'])->name('index');
 Route::get('/createCompany', [Company_Controller::class, 'createCompany'])->name('createCompany');
-Route::get('/{id}', [Company_Controller::class, 'detail'])->name('detail');
+Route::get('/{id}', [Company_Controller::class, 'detailCompany'])->name('detailCompany');
 Route::delete('/{id}', [Company_Controller::class, 'delete'])->name('delete');
-Route::post('store', [Company_Controller::class, 'store'])->name('store');
-Route::get('/edit/{id}', [Company_Controller::class, 'edit'])->name('edit');
-Route::put('/update/{id}', [Company_Controller::class, 'update'])->name('update');
+Route::post('addCompanyDetail', [Company_Controller::class, 'addCompanyDetail'])->name('addCompanyDetail');
+Route::get('/editCompany/{id}', [Company_Controller::class, 'editCompany'])->name('editCompany');
+Route::put('/updateCompany/{id}', [Company_Controller::class, 'updateCompany'])->name('updateCompany');

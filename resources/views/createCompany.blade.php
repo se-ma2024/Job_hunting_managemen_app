@@ -11,7 +11,7 @@
         <h1>企業追加</h1>
     </header>
     <main>
-        <form method="POST" action="{{ route('store') }}">
+        <form method="POST" action="{{ route('addCompanyDetail') }}">
             @csrf
             <div>
                 <label for="name">企業名:</label>
