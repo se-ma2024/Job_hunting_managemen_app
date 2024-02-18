@@ -11,17 +11,96 @@
             padding: 0;
             background-color: #f9f9f9;
         }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            padding-right: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .hamburger .row {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #333;
+            z-index: 1001;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            padding-top: 50px;
+        }
+
+        .menu.active {
+            transform: translateX(0);
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .menu ul li {
+            padding: 20px 0;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 80px auto 20px;
             background-color: #fff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-        h1 {
+        .container h1 {
+            margin: 0;
             text-align: center;
-            color: #333;
+            color: #000;
             margin-bottom: 30px;
             font-size: 36px;
         }
@@ -93,63 +172,6 @@
         .copy-button:hover {
             background-color: #45a049;
         }
-
-        .hamburger {
-            cursor: pointer;
-            position: absolute;
-            top: 15px;
-            right: 20px;
-        }
-
-        .hamburger .row {
-            width: 30px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: none;
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 100%;
-            background-color: #fff;
-            z-index: 1001;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            padding: 20px;
-        }
-
-        .menu.active {
-            transform: translateX(0);
-        }
-
-        .menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu ul li {
-            padding: 10px 0;
-        }
-
-        .menu ul li a {
-            text-decoration: none;
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -160,9 +182,8 @@
             <div class="row"></div>
             <div class="row"></div>
         </div>
-        <!-- メニューオーバーレイ -->
+        <h1>企業情報管理アプリケーション</h1>
         <div class="menu-overlay" id="menuOverlay"></div>
-        <!-- メニュー -->
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
