@@ -28,7 +28,7 @@
 
         header h1 {
             margin: 0;
-            padding-right: 50px;
+            padding-right: 100px;
             margin-left: auto;
             margin-right: auto;
         }
