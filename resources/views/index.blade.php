@@ -6,18 +6,42 @@
     <title>就活管理アプリ</title>
     <link rel="stylesheet" href="{{ asset('/css/companies_list.blade.css') }}">
     <style>
-        /* 追加したCSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            padding-right: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .hamburger {
             cursor: pointer;
-            position: absolute;
-            top: 15px;
-            right: 20px;
+            margin-right: 20px;
         }
 
         .hamburger .row {
             width: 30px;
             height: 3px;
-            background-color: #333;
+            background-color: #fff;
             margin: 5px 0;
         }
 
@@ -28,21 +52,21 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            z-index: 999;
             display: none;
         }
 
         .menu {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 200px;
             height: 100%;
-            background-color: #fff;
+            background-color: #333;
             z-index: 1001;
-            transform: translateX(100%);
+            transform: translateX(-100%);
             transition: transform 0.3s ease;
-            padding: 20px;
+            padding-top: 50px;
         }
 
         .menu.active {
@@ -53,23 +77,65 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            text-align: center;
         }
 
         .menu ul li {
-            padding: 10px 0;
+            padding: 20px 0;
         }
 
         .menu ul li a {
             text-decoration: none;
-            color: #333;
+            color: #fff;
+            font-size: 18px;
         }
 
-        /* 追加したCSS */
+        .container {
+            max-width: 800px;
+            margin: 80px auto 20px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            margin: 0;
+            text-align: center;
+            color: #000;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        .company-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .company-card .company-name {
+            font-size: 24px;
+        }
+
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .float-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #007bff;
+            background-color: #00C000;
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -85,44 +151,38 @@
 </head>
 <body>
     <header>
-        <!-- ハンバーガーメニューのアイコン -->
         <div class="hamburger" id="hamburger">
             <div class="row"></div>
             <div class="row"></div>
             <div class="row"></div>
         </div>
-        <!-- メニューオーバーレイ -->
+        <h1>企業情報管理アプリケーション</h1>
         <div class="menu-overlay" id="menuOverlay"></div>
-        <!-- メニュー -->
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
-                <li><a href="{{ route('showProfile') }}">プロフィール</a></li> <!-- プロフィール画面へのリンク -->
+                <li><a href="{{ route('showProfile') }}">プロフィール</a></li>
                 <li><a href="#">お問い合わせ</a></li>
                 <!-- 追加のメニュー項目をここに追加 -->
             </ul>
         </nav>
-        <h1>企業リスト</h1>
     </header>
-    <main>
-        <ul>
-            @foreach($companies as $company)
-                <li>
-                    <a href="{{ route('detailCompany', ['id' => $company->id]) }}">{{ $company->name }}</a>
-                    <form id="delete-form-{{ $company->id }}" action="{{ route('delete', ['id' => $company->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirmDelete('delete-form-{{ $company->id }}')">削除</button>
-                    </form>
-                </li>
-            @endforeach
-        </ul>
-        <!-- 以下が追加されたフローターボタンです -->
-        <a href="{{ route('createCompany') }}" class="float-button">＋</a>
-    </main>
+    <div class="container">
+        <h1>企業リスト</h1>
+        <main>
+        @foreach($companies as $company)
+            <div class="company-card" onclick="window.location='{{ route('detailCompany', ['id' => $company->id]) }}';">
+                <div class="company-info">
+                    <div class="company-name">{{ $company->name }}</div>
+                    <div class="selection-status">{{ $company->selection_status }}</div>
+                </div>
+            </div>
+        @endforeach
+            <a href="{{ route('createCompany') }}" class="float-button">＋</a>
+        </main>
+    </div>
 
     <script>
-        // ハンバーガーメニューの表示・非表示を制御するJavaScript
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const menu = document.getElementById('menu');

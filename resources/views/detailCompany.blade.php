@@ -23,6 +23,11 @@
         <form action="{{ route('editCompany', ['id' => $company->id]) }}" method="GET">
             <button type="submit">編集</button>
         </form>
+        <form id="delete-form" action="{{ route('delete', ['id' => $company->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
+        </form>
         <form action="{{ route('index') }}", method="GET">
             <button type="submit">戻る</button>
         </form>
