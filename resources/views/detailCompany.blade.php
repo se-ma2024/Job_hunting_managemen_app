@@ -20,8 +20,12 @@
             <p>志望動機: {{ $company->reason_for_applying }}</p>
             <p>メモ: {{ $company->memo }}</p>
         </div>
-        <a href="{{ route('editCompany', ['id' => $company->id]) }}">編集</a>
-        <a href="{{ route('index') }}">戻る</a>
+        <form action="{{ route('editCompany', ['id' => $company->id]) }}" method="GET">
+            <button type="submit">編集</button>
+        </form>
+        <form action="{{ route('index') }}", method="GET">
+            <button type="submit">戻る</button>
+        </form>
     </main>
 </body>
 </html>

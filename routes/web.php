@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\company_controller;
+use App\Http\Controllers\profile_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,13 @@ use App\Http\Controllers\company_controller;
 
 Route::get('/', [Company_Controller::class, 'index'])->name('index');
 Route::get('/createCompany', [Company_Controller::class, 'createCompany'])->name('createCompany');
+Route::get('/showProfile', [profile_controller::class, 'showProfile'])->name('showProfile');
+Route::get('/editProfile', [profile_controller::class, 'editProfile'])->name('editProfile');
 Route::get('/{id}', [Company_Controller::class, 'detailCompany'])->name('detailCompany');
 Route::delete('/{id}', [Company_Controller::class, 'delete'])->name('delete');
 Route::post('addCompanyDetail', [Company_Controller::class, 'addCompanyDetail'])->name('addCompanyDetail');
 Route::get('/editCompany/{id}', [Company_Controller::class, 'editCompany'])->name('editCompany');
 Route::put('/updateCompany/{id}', [Company_Controller::class, 'updateCompany'])->name('updateCompany');
+Route::put('/updateProfile', [profile_controller::class, 'updateProfile'])->name('updateProfile');
+
+

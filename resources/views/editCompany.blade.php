@@ -83,7 +83,9 @@
             </div>
             <button type="submit">更新</button>
         </form>
-        <a href="{{ route('detailCompany', ['id' => $company->id]) }}">キャンセル</a>
+        <form action="{{ route('detailCompany', ['id' => $company->id]) }}"method="GET">
+            <button type="submit">キャンセル</button>
+        </form>
     </main>
 </body>
 </html>
