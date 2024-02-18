@@ -36,7 +36,7 @@
         }
         input[type="text"],
         textarea {
-            width: 100%;
+            width: 98%;
             padding: 10px;
             font-size: 18px;
             border-radius: 5px;
@@ -81,7 +81,7 @@
             <label for="core_values">就活の軸:</label>
             <textarea id="core_values" name="core_values" rows="4" required>{{ $profile->core_values }}</textarea>
             <label for="self_pr">自己PR:</label>
-            <textarea id="self_pr" name="self_pr" rows="4" required>{{ $profile->self_pr }}</textarea>
+            <textarea id="self_pr" name="self_pr" rows="10" required>{{ $profile->self_pr }}</textarea>
             <input type="submit" value="更新">
         </form>
         <form action="{{ route('showProfile') }}"method="GET">
