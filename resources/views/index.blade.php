@@ -147,6 +147,10 @@
             cursor: pointer;
             z-index: 1002;
         }
+
+        .float-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
