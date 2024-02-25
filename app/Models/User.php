@@ -42,4 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Define the relationship with Company model.
+     */
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
+    
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

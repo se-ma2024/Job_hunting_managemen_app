@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>就活管理アプリ</title>
-    <link rel="stylesheet" href="{{ asset('/css/companies_list.blade.css') }}">
+    <title>プロフィール編集</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
         }
 
         header {
@@ -31,6 +30,7 @@
             padding-right: 100px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 2em;
         }
 
         .hamburger {
@@ -89,16 +89,14 @@
             color: #fff;
             font-size: 18px;
         }
-
         .container {
             max-width: 800px;
             margin: 80px auto 20px;
-            background-color: #f9f9f9;
+            background-color: #fff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-
         .container h1 {
             margin: 0;
             text-align: center;
@@ -106,52 +104,41 @@
             margin-bottom: 30px;
             font-size: 36px;
         }
-
-        .company-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+        form {
+            margin-top: 30px;
+        }
+        label {
+            display: block;
+            font-size: 20px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        textarea {
+            width: 98%;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
         }
-
-        .company-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .company-card .company-name {
-            font-size: 24px;
-        }
-
-        .company-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .float-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #00C000;
-            color: #fff;
+        input[type="submit"] {
+            background-color: #4CAF50;
             border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
+            color: white;
+            padding: 12px 24px;
             text-align: center;
-            line-height: 50px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            z-index: 1002;
+            transition: background-color 0.3s ease;
         }
-
-        .float-button:hover {
-            background-color: #0056b3;
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
-
+        
         .container button[type="submit"],
         a {
             display: block;
@@ -173,10 +160,12 @@
         a:hover {
             background-color: #555;
         }
+        
     </style>
 </head>
 <body>
     <header>
+        <!-- ハンバーガーメニューのアイコン -->
         <div class="hamburger" id="hamburger">
             <div class="row"></div>
             <div class="row"></div>
@@ -192,26 +181,31 @@
                 <!-- お問い合わせやその他のメニュー項目をここに追加 -->
             </ul>
         </nav>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
     </header>
     <div class="container">
-        <h1>企業リスト</h1>
-        <main>
-        @foreach($companies as $company)
-            <div class="company-card" onclick="window.location='{{ route('detailCompany', ['id' => $company->id]) }}';">
-                <div class="company-info">
-                    <div class="company-name">{{ $company->name }}</div>
-                    <div class="selection-status">{{ $company->selection_status }}</div>
-                </div>
-            </div>
-        @endforeach
-            <a href="{{ route('createCompany') }}" class="float-button">＋</a>
-        </main>
+        <h1>プロフィール編集</h1>
+        <form action="{{ route('addProfile') }}" method="POST">
+            @csrf
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="school_name">学校名:</label>
+            <input type="text" id="school_name" name="school_name" required>
+            <label for="phone_number">TEL:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <label for="future_goals">将来の目標:</label>
+            <textarea id="future_goals" name="future_goals" rows="4" required></textarea>
+            <label for="core_values">就活の軸:</label>
+            <textarea id="core_values" name="core_values" rows="4" required></textarea>
+            <label for="self_pr">自己PR:</label>
+            <textarea id="self_pr" name="self_pr" rows="10" required></textarea>
+            <input type="submit" value="作成">
+        </form>
+        <form action="{{ route('showProfile') }}"method="GET">
+            <button type="submit">キャンセル</button>
+        </form>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');

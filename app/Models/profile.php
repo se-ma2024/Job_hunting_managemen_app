@@ -13,6 +13,11 @@ class Profile extends Model
 
     protected $fillable = ['name', 'school_name', 'phone_number', 'email', 'future_goals', 'core_values', 'self_pr'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function updateProfile($data)
     {
         $profile = self::findOrFail(1);

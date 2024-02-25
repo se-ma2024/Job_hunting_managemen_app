@@ -182,8 +182,8 @@
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
                 <li><a href="{{ route('showProfile') }}">プロフィール</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-                <!-- 追加のメニュー項目をここに追加 -->
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
+                <!-- お問い合わせやその他のメニュー項目をここに追加 -->
             </ul>
         </nav>
     </header>

@@ -10,8 +10,13 @@ class company extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'industry', 'company_size', 'strengths', 'benefits_package', 'selection_status', 'reason_for_applying', 'memo'];
-
+    
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public static function addCompany($data)
     {

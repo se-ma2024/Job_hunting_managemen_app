@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('selection_status')->nullable();
             $table->text('reason_for_applying')->nullable();
             $table->text('memo')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

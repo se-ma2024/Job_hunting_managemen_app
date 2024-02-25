@@ -197,6 +197,28 @@
         .float-button:hover {
             background-color: #0056b3;
         }
+
+        .container button[type="submit"],
+        a {
+            display: block;
+            width: calc(100%);
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button[type="submit"]:hover,
+        a:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -212,8 +234,8 @@
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
                 <li><a href="{{ route('showProfile') }}">プロフィール</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-                <!-- 追加のメニュー項目をここに追加 -->
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
+                <!-- お問い合わせやその他のメニュー項目をここに追加 -->
             </ul>
         </nav>
     </header>

@@ -172,6 +172,28 @@
         .copy-button:hover {
             background-color: #45a049;
         }
+
+        .container button[type="submit"],
+        a {
+            display: block;
+            width: calc(100%);
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button[type="submit"]:hover,
+        a:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -187,53 +209,57 @@
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
-                <li><a href="{{ route('showProfile') }}">プロフィール</a></li> <!-- プロフィール画面へのリンク -->
-                <li><a href="#">お問い合わせ</a></li>
-                <!-- 追加のメニュー項目をここに追加 -->
+                <li><a href="{{ route('showProfile') }}">プロフィール</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
+                <!-- お問い合わせやその他のメニュー項目をここに追加 -->
             </ul>
         </nav>
     </header>
     <div class="container">
         <h1>プロフィール</h1>
-        <div class="profile-info">
-            <h2>基本情報</h2>
-            <h3>名前</h3>
-            <p>{{ $profile[0]->name }}</p>
-            <h3>学校名</h3>
-            <p>{{ $profile[0]->school_name }}</p>
-            <h3>TEL</h3>
-            <p>{{ $profile[0]->phone_number }}</p>
-            <h3>Email</h3>
-            <p>{{ $profile[0]->email }}</p>
-        </div>
+        @if($profile)
+            <div class="profile-info">
+                <h2>基本情報</h2>
+                <h3>名前</h3>
+                <p>{{ $profile->name }}</p>
+                <h3>学校名</h3>
+                <p>{{ $profile->school_name }}</p>
+                <h3>TEL</h3>
+                <p>{{ $profile->phone_number }}</p>
+                <h3>Email</h3>
+                <p>{{ $profile->email }}</p>
+            </div>
 
-        <div>
-            <h2>就活関連</h2>
-            <h3>将来の目標</h3>
-            <p>{{ $profile[0]->future_goals }}</p>
-            <h3>就活の軸</h3>
-            <p>{{ $profile[0]->core_values }}</p>
-            <h3>自己PR</h3>
-            <p>{{ $profile[0]->self_pr }}</p>
-        </div>
+            <div>
+                <h2>就活関連</h2>
+                <h3>将来の目標</h3>
+                <p>{{ $profile->future_goals }}</p>
+                <h3>就活の軸</h3>
+                <p>{{ $profile->core_values }}</p>
+                <h3>自己PR</h3>
+                <p>{{ $profile->self_pr }}</p>
+            </div>
 
-        <form action="{{ route('editProfile') }}" class="edit-button" method="GET">
-            <button type="submit">編集</button>
-        </form>
-        
-        <h2>署名</h2>
-        <div class="signature">
-            ===========================================<br>
-            {{ $profile[0]->name }}<br>
-            {{ $profile[0]->school_name }}<br>
-            TEL: {{ $profile[0]->phone_number }}<br>
-            Email: {{ $profile[0]->email }}<br>
-            ===========================================<br>
-        </div>
-        <button class="copy-button" onclick="copyToClipboard()">署名をコピー</button>
+            <form action="{{ route('editProfile') }}" class="edit-button" method="GET">
+                <button type="submit">編集</button>
+            </form>
+            
+            <h2>署名</h2>
+            <div class="signature">
+                ===========================================<br>
+                {{ $profile->name }}<br>
+                {{ $profile->school_name }}<br>
+                TEL: {{ $profile->phone_number }}<br>
+                Email: {{ $profile->email }}<br>
+                ===========================================<br>
+            </div>
+            <button class="copy-button" onclick="copyToClipboard()">署名をコピー</button>
+        @else
+            <form action="{{ route('createProfile') }}" class="edit-button" method="GET">
+                <button type="submit">作成</button>
+            </form>
+        @endif
     </div>
-    
-
     <script>
         function copyToClipboard() {
             const textToCopy = document.querySelector('.signature').innerText.trim();
