@@ -8,7 +8,6 @@
 </head>
 <body>
     <header>
-        <!-- ハンバーガーメニューのアイコン -->
         <div class="hamburger" id="hamburger">
             <div class="row"></div>
             <div class="row"></div>
@@ -20,8 +19,12 @@
             <ul>
                 <li><a href="{{ route('index') }}">ホーム</a></li>
                 <li><a href="{{ route('showProfile') }}">プロフィール</a></li>
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
-                <!-- お問い合わせやその他のメニュー項目をここに追加 -->
+                <li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+                </li>
             </ul>
         </nav>
     </header>
