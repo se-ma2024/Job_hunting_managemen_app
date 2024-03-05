@@ -97,7 +97,7 @@ header h1 {
     margin-bottom: 30px;
     font-size: 36px;
 }
-form {
+form.cancel_button {
     margin-top: 30px;
 }
 label {

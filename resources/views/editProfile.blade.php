@@ -49,7 +49,7 @@
             <textarea id="self_pr" name="self_pr" rows="10" required>{{ $profile->self_pr }}</textarea>
             <input type="submit" value="更新">
         </form>
-        <form action="{{ route('showProfile') }}"method="GET">
+        <form class = "cancel_button" action="{{ route('showProfile') }}"method="GET">
             <button type="submit">キャンセル</button>
         </form>
     </div>
