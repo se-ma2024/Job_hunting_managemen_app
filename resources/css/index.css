@@ -190,3 +190,49 @@ a:hover {
     border-style: solid;
     border-color: #00C000 transparent transparent transparent;
 }
+
+.selected {
+    background-color: #00a000;
+    color: #ffffff;
+}
+
+.rejected {
+    background-color: #a9a9a9;
+    color: #ffffff;
+}
+
+.company-name {
+    font-weight: bold;
+}
+
+.selection-status {
+    font-weight: bold;
+}
+
+.書類不合格 {
+    color: #ffffff;
+    background-color: #a9a9a9;
+}
+
+.書類選考中 {
+    color: #ffa500;
+}
+
+.書類通過 {
+    color: #32cd32;
+}
+
+.一次面接,
+.二次面接 {
+    color: #ffa500;
+}
+
+.最終面接 {
+    color: #ff8c00;
+}
+
+.内定,
+.内定辞退,
+.不合格 {
+    color: #ffffff;
+}

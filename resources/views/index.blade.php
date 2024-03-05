@@ -31,12 +31,12 @@
         <h1>企業リスト</h1>
         <main>
         @foreach($companies as $company)
-            <div class="company-card" onclick="window.location='{{ route('detailCompany', ['id' => $company->id]) }}';">
-                <div class="company-info">
-                    <div class="company-name">{{ $company->name }}</div>
-                    <div class="selection-status">{{ $company->selection_status }}</div>
-                </div>
+        <div class="company-card {{ $company->selection_status === '内定' ? 'selected' : '' }} {{ in_array(strtolower($company->selection_status), ['書類不合格', '不合格', '内定辞退']) ? 'rejected' : '' }}" onclick="window.location='{{ route('detailCompany', ['id' => $company->id]) }}';">
+            <div class="company-info">
+                <div class="company-name">{{ $company->name }}</div>
+                <div class="selection-status {{ strtolower($company->selection_status) }}">{{ $company->selection_status }}</div>
             </div>
+        </div>
         @endforeach
         <div class="speech-bubble">
             <p>企業を追加する</p>
