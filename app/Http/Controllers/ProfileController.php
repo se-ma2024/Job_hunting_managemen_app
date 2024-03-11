@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\profile;
-use App\Models\User; // Userモデルを追加
+use App\Models\User;
 
 class ProfileController extends Controller
 {
     public function showProfile()
     {
-        $user = auth()->user(); // ログイン中のユーザーを取得
-        $profile = $user->profile; // ユーザーに関連付けられたプロフィールを取得
+        $user = auth()->user();
+        $profile = $user->profile;
         return view('profile', compact('profile'));
     }
 
@@ -23,8 +23,8 @@ class ProfileController extends Controller
 
     public function editProfile()
     {
-        $user = auth()->user(); // ログイン中のユーザーを取得
-        $profile = $user->profile; // ユーザーに関連付けられたプロフィールを取得
+        $user = auth()->user();
+        $profile = $user->profile;
         return view("editProfile", compact('profile'));
     }
 
@@ -40,8 +40,8 @@ class ProfileController extends Controller
             'self_pr' => 'nullable|string',
         ]);
 
-        $user = auth()->user(); // ログイン中のユーザーを取得
-        $user->profile()->create($request->all()); // プロフィールを作成
+        $user = auth()->user();
+        $user->profile()->create($request->all());
 
         return redirect()->route('showProfile')->with('success', 'プロフィールが作成されました');
     }
@@ -58,9 +58,9 @@ class ProfileController extends Controller
             'self_pr' => 'nullable|string',
         ]);
 
-        $user = auth()->user(); // ログイン中のユーザーを取得
-        $profile = $user->profile; // ユーザーに関連付けられたプロフィールを取得
-        $profile->update($request->all()); // プロフィール情報を更新
+        $user = auth()->user();
+        $profile = $user->profile;
+        $profile->update($request->all());
         return redirect()->route('showProfile')->with('success', 'プロフィールが更新されました');
     }
 }
